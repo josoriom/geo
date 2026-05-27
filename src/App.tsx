@@ -19,10 +19,7 @@ import type {
 import { hexToRgb, type ColorRgb } from "./utilities/hexToRgb";
 import { InterpolatedSurfaceLayer } from "./components/InterpolatedSurfaceLayer";
 import { SidebarPanel } from "./components/SidebarPanel";
-import { ChemicalsPanel } from "./components/ChemicalsPanel";
-import { AromaPanel } from "./components/AromaPanel";
-import { PalatePanel } from "./components/PalatePanel";
-import { ClimatePanel } from "./components/ClimatePanel";
+import { WeightsPanel } from "./components/WeightsPanel";
 import { TitlePanel } from "./components/TitlePanel";
 
 export interface MapTheme {
@@ -56,10 +53,7 @@ function GeoAppShell() {
       </MapContainer>
       <TitlePanel/>
       <SidebarPanel />
-      <ChemicalsPanel />
-      <AromaPanel />
-      <PalatePanel />
-      <ClimatePanel />
+      <WeightsPanel />
     </div>
   );
 }
@@ -121,13 +115,12 @@ function GeoMapLayers() {
               });
               
               // Extract feature data
-              const brand = feature.properties?.Brand || "Unknown";
-              const coordinates = feature.geometry?.coordinates || [0, 0];
+              const brand = feature.properties?.VineyardIdx || "Unknown";
+              // const coordinates = feature.geometry?.coordinates || [0, 0];
               // Create popup content
               const popupContent = `
               <div style="padding: 8px;">
-              <strong>Brand:</strong> ${brand}<br />
-              <strong>Coordinates:</strong> [${coordinates[1]}, ${coordinates[0]}]
+              <strong>Site:</strong> ${brand}<br />
               </div>
               `;
               
@@ -153,33 +146,6 @@ function GeoMapLayers() {
     </>
   );
 }
-
-// const FIXED_DOT_STYLE = {
-//   radius: 6,
-//   fillColor: "#94a3b8",
-//   fillOpacity: 0.85,
-//   stroke: false,
-// } as const;
-
-// export function PointMarkerLayer({ data }: { data: GeoJsonCollection | null }) {
-//   if (!data) return null;
-//   return (
-//     <LeafletGeoJSON
-//       data={data as any}
-//       pointToLayer={(feature, latlng) => {
-//         const marker = L.circleMarker(latlng, FIXED_DOT_STYLE);
-//         const label =
-//           feature.properties?.Variety || feature.properties?.name || "Point";
-//         marker.bindTooltip(`<strong>${label}</strong>`, {
-//           permanent: true,
-//           direction: "top",
-//           className: "glass-label",
-//         });
-//         return marker;
-//       }}
-//     />
-//   );
-// }
 
 function MapAutoFitter({ files }: { files: ZipFileEntry[] }) {
   const map = useMap();

@@ -168,3 +168,33 @@ strong {
   font-size: 1.2em;
 }
 
+.tab__header {
+  display: flex;
+  list-style: none;
+  /* gap: 2rem; */
+}
+
+.tab__header li {
+  flex: 1;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid black;
+  text-align: center;
+  border-top-right-radius: 100%;
+  border-top-left-radius: 100%;
+  background: lightgrey;
+  /* color: #fff; */
+  /* font-size: 2rem; */
+}
+
+.active {
+  background: white !important;
+  color: black !important;
+  border-bottom: none !important;
+  font-weight: 600;
+}
+
+.tab__content{
+  border: 2px solid black;
+  border-top: none;
+}

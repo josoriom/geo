@@ -40,18 +40,10 @@ export function useMenuSlice(): boolean {
   return useGeoState().isMenuExpanded;
 }
 
-export function useChemicalsSlice(): boolean {
-  return useGeoState().isChemicalsExpanded
+export function useBarplotSlice(): boolean {
+  return useGeoState().isBarplotExpanded
 }
 
-export function useAromaSlice(): boolean {
-  return useGeoState().isAromaExpanded
-}
-
-export function usePalateSlice(): boolean {
-  return useGeoState().isPalateExpanded
-}
-
-export function useClimateSlice(): boolean {
-  return useGeoState().isClimateExpanded
+export function useActiveTab(): number {
+  return useGeoState().activeTab;
 }

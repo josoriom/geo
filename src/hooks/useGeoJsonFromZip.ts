@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 
 import JSZip from "jszip";
 
+export type WeightsArray = Array<{ type: string; data: Array<{ attribute: string; weight: number }> }>;
+
 export type GeoJsonCollection = GeoJSON.FeatureCollection<
   GeoJSON.Geometry,
   any
 > & {
-  chemical: Array<{ attribute: string; weight: number }>;
-  aroma: Array<{ attribute: string; weight: number }>;
-  palate: Array<{ attribute: string; weight: number }>;
-  climate: Array<{ attribute: string; weight: number }>;
+  weights: WeightsArray;
 };
 
 export interface ZipFileEntry {
