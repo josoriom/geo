@@ -57,6 +57,7 @@ export const geoReducer = produce((draft: GeoState, action: GeoAction) => {
 
     case "SET_GRADIENT":
       draft.activeGradientFile = action.payload;
+      draft.activeTab = 0;
       break;
 
     case "COLOR_CHANGE":
